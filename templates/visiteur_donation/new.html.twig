@@ -1,0 +1,10 @@
+
+{% block title %}New Donation{% endblock %}
+
+{% block body %}
+    <h1>Create new Donation</h1>
+
+    {{ include('visiteur_donation/_form.html.twig') }}
+
+    <a href="{{ path('app_visiteur_donation_index') }}">back to list</a>
+{% endblock %}

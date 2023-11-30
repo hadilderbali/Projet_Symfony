@@ -1,0 +1,54 @@
+
+{% block title %}Categorie{% endblock %}
+
+{% block body %}
+    <h1>Categorie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie.getId() }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ categorie.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_visiteur_categorie_index') }}">back to list</a>
+    <div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Date</th>
+                <th>Nom_auteur</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for article in articles %}
+                <tr>
+                    <td>{{ article.id }}</td>
+                    <td>{{ article.title }}</td>
+                    <td>{{ article.content }}</td>
+                    <td>{{ article.date ? article.date|date('Y-m-d') : '' }}</td>
+                    <td>{{ article.nomAuteur }}</td>
+                    <td>
+                        <a href="{{ path('app_visiteur_article_show', {'id': article.id}) }}">show</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

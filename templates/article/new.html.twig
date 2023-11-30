@@ -1,0 +1,42 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}New Article{% endblock %}
+
+{% block body %}
+    <div style="display: flex;align-items: center;justify-content: center;margin-top: 150px;">
+    <h1>Create new Article</h1>
+    <table>
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <tr>
+        <td>{{ form_label(form.title,"Title") }}</td>
+        <td>{{ form_widget(form.title) }}</td>
+        <td>{{ form_errors(form.title) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.content,"Content") }}</td>
+        <td>{{ form_widget(form.content) }}</td>
+        <td>{{ form_errors(form.content) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.date,"Date") }}</td>
+        <td>{{ form_widget(form.date) }}</td>
+        <td>{{ form_errors(form.date) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.nom_auteur,"Nom auteur") }}</td>
+        <td>{{ form_widget(form.nom_auteur) }}</td>
+        <td>{{ form_errors(form.nom_auteur) }}</td>
+    </tr>
+
+    </table>
+    <button type="submit">Save</button>
+
+
+    {{ form_end(form) }}
+
+
+    <br>
+
+    <a href="{{ path('app_article_index') }}">back to list</a>
+    {% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Hello ChercherController!{% endblock %}
+
+{% block body %}
+    <div style="display: flex; align-items: center; justify-content: center; margin-top: 150px;">
+        <div>
+            <form method="get" action="{{ path('app_chercher') }}">
+                <input type="search" name="search" placeholder="Recherche ..." />
+                <label for="publishedAfter">Publié après :</label>
+                <input type="date" name="publishedAfter" />
+                <button type="submit">Rechercher</button>
+            </form>
+        </div>
+        <table>
+            {% for article in articles %}
+                <tr>
+                    <td>{{ article.id }}</td>
+                    <td>{{ article.title }}</td>
+                    <td>{{ article.content }}</td>
+                    <td>{{ article.date ? article.date|date('Y-m-d') : '' }}</td>
+                    <td>{{ article.nomAuteur }}</td>
+                    <td>
+                        <a href="{{ path('app_visiteur_article_show', {'id': article.id}) }}">show</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
